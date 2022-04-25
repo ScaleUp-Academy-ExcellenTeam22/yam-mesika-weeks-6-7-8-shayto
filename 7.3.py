@@ -90,5 +90,27 @@ class PostOffice:
         return [msg for msg in self.boxes[username] if string in msg['body']]
 
 
+class Message:
+    """A Message class. Manages the user's message, can present the message.
+        :ivar int message_id: Incremental id of the message.
+        :ivar string message_body: The body of the message.
+        :ivar string sender: The name of the sender.
+        :ivar boolean read: Indicates whether the message was read or not.
+        """
+    def __init__(self, message_id, message_body, sender, read):
+        self.message_id = message_id
+        self.sender = sender
+        self.message_body = message_body
+        self.read = read
+
+    def __str__(self):
+        """
+        The function styles the message and returns string.
+        :return:
+        """
+        return f"""This message is from {self.sender}.\nThe message is as follows:\n{self.message_body}."""
+
+
 if __name__ == "__main__":
-    p = PostOffice(["Shay"])
+    message = Message(0, "hello", "Shay", True)
+    print(message)
